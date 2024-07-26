@@ -152,7 +152,7 @@ public class DBLogReader {
             QueryBuilder qb = new QueryBuilder(dbNameResolver);
             cursor = mDatabase.rawQuery(qb.buildStackTraceQuery(logEntryId), new String[] {});
             while (cursor.moveToNext()) {
-                stackTrace.add(cursor.getString(cursor.getColumnIndex(dbNameResolver.getColumnName(ColumnName.TRACE_LINE))));
+                stackTrace.add(cursor.getString(cursor.getColumnIndexOrThrow(dbNameResolver.getColumnName(ColumnName.TRACE_LINE))));
             }
         } catch (SQLiteException e) {
             throw new SQLException("Cannot retrieve log entries", e);
@@ -177,11 +177,11 @@ public class DBLogReader {
             while (cursor.moveToNext()) {
                 LogEntry entry = new LogEntry();
                 entry.setContext(0);
-                entry.setId(cursor.getInt(cursor.getColumnIndex(mDbNameResolver.getColumnName(ColumnName.EVENT_ID))));
-                entry.setLevel(cursor.getString(cursor.getColumnIndex(dbNameResolver.getColumnName(ColumnName.LEVEL_STRING))));
-                entry.setMessage(cursor.getString(cursor.getColumnIndex(dbNameResolver.getColumnName(ColumnName.FORMATTED_MESSAGE))));
-                entry.setTimestamp(cursor.getLong(cursor.getColumnIndex(dbNameResolver.getColumnName(ColumnName.TIMESTMP))));
-                entry.setLoggerName(cursor.getString(cursor.getColumnIndex(dbNameResolver.getColumnName(ColumnName.LOGGER_NAME))));
+                entry.setId(cursor.getInt(cursor.getColumnIndexOrThrow(mDbNameResolver.getColumnName(ColumnName.EVENT_ID))));
+                entry.setLevel(cursor.getString(cursor.getColumnIndexOrThrow(dbNameResolver.getColumnName(ColumnName.LEVEL_STRING))));
+                entry.setMessage(cursor.getString(cursor.getColumnIndexOrThrow(dbNameResolver.getColumnName(ColumnName.FORMATTED_MESSAGE))));
+                entry.setTimestamp(cursor.getLong(cursor.getColumnIndexOrThrow(dbNameResolver.getColumnName(ColumnName.TIMESTMP))));
+                entry.setLoggerName(cursor.getString(cursor.getColumnIndexOrThrow(dbNameResolver.getColumnName(ColumnName.LOGGER_NAME))));
                 if ("ERROR".equals(entry.getLevel())) {
                     entry.setStackTrace(getStackTrace(entry.getId()));
                 }

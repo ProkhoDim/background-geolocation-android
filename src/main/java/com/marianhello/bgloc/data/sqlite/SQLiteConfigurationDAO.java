@@ -99,30 +99,30 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
 
   private Config hydrate(Cursor c) throws JSONException {
     Config config = Config.getDefault();
-    config.setStationaryRadius(c.getFloat(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_RADIUS)));
-    config.setDistanceFilter(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_DISTANCE_FILTER)));
-    config.setDesiredAccuracy(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_DESIRED_ACCURACY)));
-    config.setDebugging( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_DEBUG)) == 1) ? true : false );
-    config.setNotificationTitle(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_NOTIF_TITLE)));
-    config.setNotificationText(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_NOTIF_TEXT)));
-    config.setSmallNotificationIcon(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_NOTIF_ICON_SMALL)));
-    config.setLargeNotificationIcon(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_NOTIF_ICON_LARGE)));
-    config.setNotificationIconColor(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_NOTIF_COLOR)));
-    config.setStopOnTerminate( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_STOP_TERMINATE)) == 1) ? true : false );
-    config.setStopOnStillActivity( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_STOP_ON_STILL)) == 1) ? true : false );
-    config.setStartOnBoot( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_START_BOOT)) == 1) ? true : false );
-    config.setStartForeground( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_START_FOREGROUND)) == 1) ? true : false );
-    config.setNotificationsEnabled( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_NOTIFICATIONS_ENABLED)) == 1) ? true : false );
-    config.setLocationProvider(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_LOCATION_PROVIDER)));
-    config.setInterval(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_INTERVAL)));
-    config.setFastestInterval(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_FASTEST_INTERVAL)));
-    config.setActivitiesInterval(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_ACTIVITIES_INTERVAL)));
-    config.setUrl(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_URL)));
-    config.setSyncUrl(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_SYNC_URL)));
-    config.setSyncThreshold(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_SYNC_THRESHOLD)));
-    config.setHttpHeaders(new JSONObject(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_HEADERS))));
-    config.setMaxLocations(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_MAX_LOCATIONS)));
-    config.setTemplate(LocationTemplateFactory.fromJSONString(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_TEMPLATE))));
+    config.setStationaryRadius(c.getFloat(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_RADIUS)));
+    config.setDistanceFilter(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_DISTANCE_FILTER)));
+    config.setDesiredAccuracy(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_DESIRED_ACCURACY)));
+    config.setDebugging( (c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_DEBUG)) == 1) ? true : false );
+    config.setNotificationTitle(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_NOTIF_TITLE)));
+    config.setNotificationText(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_NOTIF_TEXT)));
+    config.setSmallNotificationIcon(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_NOTIF_ICON_SMALL)));
+    config.setLargeNotificationIcon(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_NOTIF_ICON_LARGE)));
+    config.setNotificationIconColor(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_NOTIF_COLOR)));
+    config.setStopOnTerminate( (c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_STOP_TERMINATE)) == 1) ? true : false );
+    config.setStopOnStillActivity( (c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_STOP_ON_STILL)) == 1) ? true : false );
+    config.setStartOnBoot( (c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_START_BOOT)) == 1) ? true : false );
+    config.setStartForeground( (c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_START_FOREGROUND)) == 1) ? true : false );
+    config.setNotificationsEnabled( (c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_NOTIFICATIONS_ENABLED)) == 1) ? true : false );
+    config.setLocationProvider(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_LOCATION_PROVIDER)));
+    config.setInterval(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_INTERVAL)));
+    config.setFastestInterval(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_FASTEST_INTERVAL)));
+    config.setActivitiesInterval(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_ACTIVITIES_INTERVAL)));
+    config.setUrl(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_URL)));
+    config.setSyncUrl(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_SYNC_URL)));
+    config.setSyncThreshold(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_SYNC_THRESHOLD)));
+    config.setHttpHeaders(new JSONObject(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_HEADERS))));
+    config.setMaxLocations(c.getInt(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_MAX_LOCATIONS)));
+    config.setTemplate(LocationTemplateFactory.fromJSONString(c.getString(c.getColumnIndexOrThrow(ConfigurationEntry.COLUMN_NAME_TEMPLATE))));
 
     return config;
   }

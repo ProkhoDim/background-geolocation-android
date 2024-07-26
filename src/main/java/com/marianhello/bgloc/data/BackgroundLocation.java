@@ -168,30 +168,30 @@ public class BackgroundLocation implements Parcelable {
     public static BackgroundLocation fromCursor(Cursor c) {
         BackgroundLocation l = new BackgroundLocation();
 
-        l.setProvider(c.getString(c.getColumnIndex(LocationEntry.COLUMN_NAME_PROVIDER)));
-        l.setTime(c.getLong(c.getColumnIndex(LocationEntry.COLUMN_NAME_TIME)));
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_ACCURACY)) == 1) {
-            l.setAccuracy(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_ACCURACY)));
+        l.setProvider(c.getString(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_PROVIDER)));
+        l.setTime(c.getLong(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_TIME)));
+        if (c.getInt(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_HAS_ACCURACY)) == 1) {
+            l.setAccuracy(c.getFloat(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_ACCURACY)));
         }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_SPEED)) == 1) {
-            l.setSpeed(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_SPEED)));
+        if (c.getInt(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_HAS_SPEED)) == 1) {
+            l.setSpeed(c.getFloat(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_SPEED)));
         }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_BEARING)) == 1) {
-            l.setBearing(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_BEARING)));
+        if (c.getInt(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_HAS_BEARING)) == 1) {
+            l.setBearing(c.getFloat(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_BEARING)));
         }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_ALTITUDE)) == 1) {
-            l.setAltitude(c.getDouble(c.getColumnIndex(LocationEntry.COLUMN_NAME_ALTITUDE)));
+        if (c.getInt(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_HAS_ALTITUDE)) == 1) {
+            l.setAltitude(c.getDouble(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_ALTITUDE)));
         }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_RADIUS)) == 1) {
-            l.setRadius(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_RADIUS)));
+        if (c.getInt(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_HAS_RADIUS)) == 1) {
+            l.setRadius(c.getFloat(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_RADIUS)));
         }
-        l.setLatitude(c.getDouble(c.getColumnIndex(LocationEntry.COLUMN_NAME_LATITUDE)));
-        l.setLongitude(c.getDouble(c.getColumnIndex(LocationEntry.COLUMN_NAME_LONGITUDE)));
-        l.setLocationProvider(c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_LOCATION_PROVIDER)));
-        l.setBatchStartMillis(c.getLong(c.getColumnIndex(LocationEntry.COLUMN_NAME_BATCH_START_MILLIS)));
-        l.setStatus(c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_STATUS)));
-        l.setLocationId(c.getLong(c.getColumnIndex(LocationEntry._ID)));
-        l.setMockFlags(c.getInt((c.getColumnIndex(LocationEntry.COLUMN_NAME_MOCK_FLAGS))));
+        l.setLatitude(c.getDouble(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_LATITUDE)));
+        l.setLongitude(c.getDouble(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_LONGITUDE)));
+        l.setLocationProvider(c.getInt(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_LOCATION_PROVIDER)));
+        l.setBatchStartMillis(c.getLong(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_BATCH_START_MILLIS)));
+        l.setStatus(c.getInt(c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_STATUS)));
+        l.setLocationId(c.getLong(c.getColumnIndexOrThrow(LocationEntry._ID)));
+        l.setMockFlags(c.getInt((c.getColumnIndexOrThrow(LocationEntry.COLUMN_NAME_MOCK_FLAGS))));
 
         return l;
     }
